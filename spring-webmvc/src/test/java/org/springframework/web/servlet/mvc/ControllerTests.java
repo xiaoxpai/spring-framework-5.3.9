@@ -46,6 +46,10 @@ import static org.mockito.Mockito.verify;
  */
 public class ControllerTests {
 
+	/**
+	 * 解释：该测试方法的主要功能是验证控制器是否正确返回指定的视图名称，并且不会向视图传递任何模型数据。
+	 * @throws Exception
+	 */
 	@Test
 	public void parameterizableViewController() throws Exception {
 		String viewName = "viewName";
