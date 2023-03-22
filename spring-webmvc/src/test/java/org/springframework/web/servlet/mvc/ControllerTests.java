@@ -52,11 +52,18 @@ public class ControllerTests {
 	 */
 	@Test
 	public void parameterizableViewController() throws Exception {
+		//创建了一个测试用的视图名称`viewName`
 		String viewName = "viewName";
+		//创建了一个`ParameterizableViewController`实例
 		ParameterizableViewController pvc = new ParameterizableViewController();
+		//并将该视图名称设置为其视图名称
 		pvc.setViewName(viewName);
+
+		//调用`handleRequest`方法，模拟一个GET请求，并传入一个`MockHttpServletRequest`和一个`MockHttpServletResponse`对象作为参数，以触发视图控制器的处理逻辑
 		// We don't care about the params.
 		ModelAndView mv = pvc.handleRequest(new MockHttpServletRequest("GET", "foo.html"), new MockHttpServletResponse());
+
+		//使用JUnit的`assertThat`断言来验证控制器是否正确返回了指定的视图名称，并且不会向视图传递任何模型数据。
 		assertThat(mv.getModel().size() == 0).as("model has no data").isTrue();
 		assertThat(mv.getViewName().equals(viewName)).as("model has correct viewname").isTrue();
 		assertThat(pvc.getViewName().equals(viewName)).as("getViewName matches").isTrue();
